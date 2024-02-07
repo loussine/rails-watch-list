@@ -1,0 +1,9 @@
+<h1>Add a film to the list <%= @list.name %></h1>
+
+<%= simple_form_for [@list, @bookmark] do |f| %>
+        <%= f.input :movie, collection: Movie.all%>
+        <%= f.input :comment %>
+        <%= f.submit "Add Bookmark", class: 'btn btn-primary' %>
+      <% end %>
+
+<%# , input_html: {multiple: true}, include_hidden: false %>
