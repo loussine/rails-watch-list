@@ -1,46 +1,25 @@
 class BookmarksController < ApplicationController
   before_action :set_list, only: [:new, :create]
 
-
-
   def new
     @bookmark = Bookmark.new
   end
 
   def create
-        # récupérer les 3 champs
-     # List (déjà dans le befor_action)
+    @bookmark = Bookmark.new(list_params)
+    @bookmark.list = List.find(params[:list_id])
 
-    # Comment
-    @comment = params[:bookmark][:comment]
-
-    # Movie
-    @movie = Movie.find(params[:bookmark][:movie])
-
-    # créer bookmark (concaténation)
-    @bookmark = Bookmark.new({comment: @comment, movie: @movie, list: @list})
-    # sauvegarder en bdd
-    @bookmark.save
-    redirect_to list_path(@list)
-
-    # puts "coucou"
-    # else
-    #   render :new
-    # end
-
-      # on rend la vue du controller dans lequel on est déjà
-
-
-      #show
-    # @tags.each do |tag|
-    #   plant_tag = PlantTag.new(plant: @plant, tag: tag)
-    #   plant_tag.save
-    # end
-    # redirect_to garden_path(@plant.garden)
-    # retoourner sur la vue de la list
+    if @bookmark.save
+      redirect_to list_path(@list), notice: 'Bookmark successfully created'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    @bookmark = Bookmark.find(params[:id])
+    @bookmark.destroy
+    redirect_to list_path(@bookmark.list), notice: 'Bookmark was successfully destroyed'
   end
 
 
@@ -50,8 +29,47 @@ class BookmarksController < ApplicationController
     @list = List.find(params[:list_id])
   end
 
+  def list_params
+    params.require(:bookmark).permit(:comment, :movie_id)
+  end
+
 end
 
-# comment
-# movie_id
-# list_id
+# class BookmarksController < ApplicationController
+#   before_action :set_bookmark, only: :destroy
+#   before_action :set_list, only: [:new, :create]
+
+#   def new
+#     @bookmark = Bookmark.new
+#   end
+
+#   def create
+#   @bookmark = Bookmark.new(bookmark_params)
+#   @bookmark.list = @list
+#   if @bookmark.save
+#   redirect_to list_path(@list)
+#   else
+#   # @review = Review.new
+#   render :new, status: :unprocessable_entity
+#   end
+#   end
+
+#   def destroy
+#   @bookmark.destroy
+#   redirect_to list_path(@bookmark.list), status: :see_other
+#   end
+
+#   private
+
+#   def bookmark_params
+#   params.require(:bookmark).permit(:comment, :movie_id)
+#   end
+
+#   def set_bookmark
+#   @bookmark = Bookmark.find(params[:id])
+#   end
+
+#   def set_list
+#   @list = List.find(params[:list_id])
+#   end
+#   end
