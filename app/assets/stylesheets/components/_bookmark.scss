@@ -13,14 +13,6 @@
   // align-items: s;
 }
 
-#flexEnd {
-  // position: absolute;
-  // bottom: 10px;
-  // left: 10px;
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: space-between;
-}
 
 #marginRight {
   margin-right: 5px;
@@ -34,10 +26,6 @@
   left: 10px;
 }
 
-// #relativeComment {
-//   position: relative;
-
-// }
 
 #absoluteDelete {
   position: absolute;
@@ -46,9 +34,15 @@
   color: red;
 }
 
-// .card-trip-infos .card-trip-user {
-//   position: absolute;
-//   right: 16px;
-//   top: -20px;
-//   width: 40px;
-// }
+.delete-link {
+  font-family: "Work Sans", Helvetica, sans-serif; // Utilisation de la famille de polices spécifiée
+  font-size: 12px; // Taille de la police de caractères
+  color: $danger; // Utilisation de la couleur danger définie dans les variables Bootstrap
+  font-weight: bold;
+}
+
+// <i class="fa-solid fa-quote-left"></i>
+
+// <%# <p id="test"><%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></p>
+
+// <p><strong>Delete</strong></p>

@@ -37,20 +37,17 @@
             <%# Attention : la position absolue de iconeEtComment & absoluteDelete est rattachée à la position relative de bookmark %>
               <%# icône et commentaire %>
               <div id="iconeEtComment">
-                <p id="marginRight">Icone</p>
+                <p id="marginRight"><i class="fa-solid fa-quote-left"></i></p>
                 <p><strong><%="#{bookmark.comment}"%></strong></p>
               </div>
               <%# bouton Delete %>
               <div id="absoluteDelete">
-                <p><strong>Delete</strong></p>
+                <%# <p><strong>Delete</strong></p> %>
+                <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-link" %>
               </div>
             </div>
 
-              <%# <p class="red"><%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></p>
-
-
             </div>
-              <%# <p id="test"><%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></p>
           </div>
           <% end %>
         </div>
