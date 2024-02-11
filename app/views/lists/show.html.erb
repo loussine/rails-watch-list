@@ -1,16 +1,73 @@
-<h1>List : <%= @list.name %></h1>
 
-<h2>Bookmarks:</h2>
-<ul>
-  <% @list.bookmarks.each do |bookmark| %>
-    <li>
-      <%= "#{bookmark.movie.title} - #{bookmark.comment}" %>
-      <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-    </li>
-  <% end %>
-</ul>
+<%# BANDEAU  - REMPLACER IMAGE PAR IMAGE PROPRE A LA CATEGORIE%>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+    url(https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+    <h1><%= @list.name %></h1>
+  </div>
+<%# A FAIRE %>
+
+  <div class="container">
+
+    <%# BOUTON %>
+    <div class="titre-et-bouton" id="rightAlign">
+      <button type="button" class="btn btn-success">
+        <%= link_to "Add a movie", new_list_bookmark_path(@list) %>
+      </button>
+    </div>
+
+    <%# CARDS %>
+    <div class="cards small-container">
+
+      <% @list.bookmarks.each do |bookmark| %>
+        <div class="card-trip">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+
+          <div class="bookmark" >
+
+            <div id="marginBottomDix">
+              <h2><%= "#{bookmark.movie.title}" %></h2>
+              <p>Résumé - A FAIRE - Modifier le seed - Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum. Wikipédia
+              </p>
+              <br>
+            </div>
+
+            <%# dernière ligne de la card %>
+            <div class="space-beetween">
+
+            <%# Attention : la position absolue de iconeEtComment & absoluteDelete est rattachée à la position relative de bookmark %>
+              <%# icône et commentaire %>
+              <div id="iconeEtComment">
+                <p id="marginRight">Icone</p>
+                <p><strong><%="#{bookmark.comment}"%></strong></p>
+              </div>
+              <%# bouton Delete %>
+              <div id="absoluteDelete">
+                <p><strong>Delete</strong></p>
+              </div>
+            </div>
+
+              <%# <p class="red"><%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></p>
 
 
-<%= link_to "Add a bookmark",  new_list_bookmark_path(@list) %>
+            </div>
+              <%# <p id="test"><%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></p>
+          </div>
+          <% end %>
+        </div>
 
-<%= link_to "Back to the Lists", lists_path %>
+
+
+
+<%#
+      <ul>
+        <% @list.bookmarks.each do |bookmark| %>
+          <%# <li>
+            <%= "#{bookmark.movie.title} - #{bookmark.comment}" %>
+            <%# <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+          <%# </li>
+        <% end %>
+      <%# </ul> %>
+
+    </div>
+  </div>
+</div>

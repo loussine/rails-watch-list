@@ -10,3 +10,19 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-lewagon .navbar-nav {
+  display: flex;
+  flex-direction: row; /* Aligner horizontalement */
+  justify-content: flex-end;
+}
+
+.navbar-lewagon .navbar-nav .nav-item {
+  margin-left: 20px; /* Ajouter un espacement entre les items de l'ul */
+}
+
+
+.navbar-lewagon .container-fluid {
+  display: flex;
+  flex-direction: row; /* Aligner horizontalement */
+}
