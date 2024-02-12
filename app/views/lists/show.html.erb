@@ -19,14 +19,13 @@
 
       <% @list.bookmarks.each do |bookmark| %>
         <div class="card-trip">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+          <img src="<%= bookmark.movie.poster_url %>" />
 
           <div class="bookmark" >
 
             <div id="marginBottomDix">
               <h2><%= "#{bookmark.movie.title}" %></h2>
-              <p>Résumé - A FAIRE - Modifier le seed - Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum. Wikipédia
-              </p>
+              <p><%= bookmark.movie.overview %></p>
               <br>
             </div>
 
